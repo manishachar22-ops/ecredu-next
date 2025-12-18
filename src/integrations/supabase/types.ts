@@ -14,7 +14,108 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admission_inquiries: {
+        Row: {
+          address: string | null
+          city: string | null
+          created_at: string
+          date_of_birth: string | null
+          email: string
+          full_name: string
+          gender: string | null
+          id: string
+          message: string | null
+          percentage: string | null
+          phone: string
+          pincode: string | null
+          program: string
+          qualification: string | null
+          state: string | null
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          city?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          email: string
+          full_name: string
+          gender?: string | null
+          id?: string
+          message?: string | null
+          percentage?: string | null
+          phone: string
+          pincode?: string | null
+          program: string
+          qualification?: string | null
+          state?: string | null
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          city?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string
+          full_name?: string
+          gender?: string | null
+          id?: string
+          message?: string | null
+          percentage?: string | null
+          phone?: string
+          pincode?: string | null
+          program?: string
+          qualification?: string | null
+          state?: string | null
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      news_events: {
+        Row: {
+          category: string
+          content: string | null
+          created_at: string
+          event_date: string | null
+          excerpt: string | null
+          id: string
+          image_url: string | null
+          published: boolean | null
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          content?: string | null
+          created_at?: string
+          event_date?: string | null
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean | null
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          content?: string | null
+          created_at?: string
+          event_date?: string | null
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean | null
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
