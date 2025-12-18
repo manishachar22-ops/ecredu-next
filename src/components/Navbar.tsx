@@ -2,22 +2,24 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import { Link } from "react-router-dom";
+
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "About Us", href: "#about" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/#about" },
   {
     label: "Programs",
-    href: "#programs",
+    href: "/programs",
     submenu: [
-      { label: "Management (BBA/BCA/B.Com)", href: "#programs" },
-      { label: "Aviation & Hospitality", href: "#programs" },
-      { label: "Paramedical", href: "#programs" },
-      { label: "Nursing", href: "#programs" },
+      { label: "Management (BBA/BCA/B.Com)", href: "/programs" },
+      { label: "Aviation & Hospitality", href: "/programs/management-bba" },
+      { label: "Nursing", href: "/programs/nursing-bsc" },
+      { label: "Paramedical", href: "/programs/paramedical" },
     ],
   },
-  { label: "Facilities", href: "#facilities" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Contact", href: "#contact" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "News & Events", href: "/news" },
+  { label: "Admission", href: "/admission" },
 ];
 
 export function Navbar() {
@@ -79,15 +81,15 @@ export function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
+            {navLinks.map((link) => (
                 <div
                   key={link.label}
                   className="relative"
                   onMouseEnter={() => link.submenu && setOpenSubmenu(link.label)}
                   onMouseLeave={() => setOpenSubmenu(null)}
                 >
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className={`px-4 py-2 rounded-lg font-medium flex items-center gap-1 transition-colors ${
                       isScrolled
                         ? "text-foreground hover:bg-muted"
@@ -96,20 +98,20 @@ export function Navbar() {
                   >
                     {link.label}
                     {link.submenu && <ChevronDown className="w-4 h-4" />}
-                  </a>
+                  </Link>
 
                   {/* Submenu */}
                   {link.submenu && openSubmenu === link.label && (
                     <div className="absolute top-full left-0 pt-2 animate-fade-in">
                       <div className="bg-card rounded-xl shadow-elegant border border-border p-2 min-w-[220px]">
-                        {link.submenu.map((sublink) => (
-                          <a
+                      {link.submenu.map((sublink) => (
+                          <Link
                             key={sublink.label}
-                            href={sublink.href}
+                            to={sublink.href}
                             className="block px-4 py-2 rounded-lg text-sm text-foreground hover:bg-muted transition-colors"
                           >
                             {sublink.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -119,11 +121,11 @@ export function Navbar() {
             </div>
 
             {/* CTA Button */}
-            <div className="hidden lg:block">
+            <Link to="/admission">
               <Button variant="navCta" size="lg">
                 Apply Now
               </Button>
-            </div>
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
